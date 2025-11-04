@@ -14,3 +14,4 @@ The project documentation includes guides for development and requirements.
 - [PRD](../docs/todo-app-prd.md) - Product Requirements Document with detailed specifications
 - [Implementation Guide](../docs/implementation-guide.md) - Technical implementation details and code examples
 - [UI Guidelines](../docs/ui-guidelines.md) - Core UI/UX design guidelines and glassmorphism style reference
+- [Testing Guidelines](../docs/testing-guidelines.md) - Principles and requirements for app testing
