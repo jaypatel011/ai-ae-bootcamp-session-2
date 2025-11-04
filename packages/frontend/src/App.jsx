@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>📋 TODO App</h1>
-        <p className="app-subtitle">Manage your tasks with ease</p>
+        <h1>✨ FlowTask</h1>
+        <p className="app-subtitle">Organize your life, amplify your productivity</p>
       </header>
 
       <main className="app-main">
@@ -51,7 +51,7 @@ function App() {
       </main>
 
       <footer className="app-footer">
-        <p>© 2025 TODO App. Built with React.</p>
+        <p>© 2025 FlowTask. Built with passion for productivity.</p>
       </footer>
     </div>
   );

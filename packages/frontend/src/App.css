@@ -8,46 +8,46 @@
    ======================================== */
 
 :root {
-  /* Primary Colors & Gradients */
-  --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --bg-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --bg-tertiary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  /* Primary Colors & Gradients - Dark iPhone 17 Inspired */
+  --bg-primary: linear-gradient(135deg, #18181b 0%, #232526 100%);
+  --bg-secondary: linear-gradient(135deg, #232526 0%, #18181b 100%);
+  --bg-tertiary: linear-gradient(135deg, #232526 0%, #18181b 100%);
 
-  /* Neutral Colors */
-  --neutral-50: #fafafa;
-  --neutral-100: #f5f5f5;
-  --neutral-200: #e5e5e5;
-  --neutral-300: #d4d4d4;
-  --neutral-400: #a3a3a3;
-  --neutral-500: #737373;
-  --neutral-600: #525252;
-  --neutral-700: #404040;
-  --neutral-800: #262626;
-  --neutral-900: #171717;
+  /* Neutral Colors - Dark */
+  --neutral-50: #18181b;
+  --neutral-100: #232526;
+  --neutral-200: #2d2d31;
+  --neutral-300: #34343a;
+  --neutral-400: #44444a;
+  --neutral-500: #55555a;
+  --neutral-600: #66666a;
+  --neutral-700: #77777a;
+  --neutral-800: #88888a;
+  --neutral-900: #a0a0a0;
 
-  /* Glass Colors */
-  --glass-white: rgba(255, 255, 255, 0.1);
-  --glass-white-hover: rgba(255, 255, 255, 0.15);
-  --glass-white-active: rgba(255, 255, 255, 0.2);
-  --glass-dark: rgba(0, 0, 0, 0.1);
-  --glass-dark-hover: rgba(0, 0, 0, 0.15);
+  /* Glass Colors - Dark Enhanced */
+  --glass-white: rgba(255, 255, 255, 0.08);
+  --glass-white-hover: rgba(255, 255, 255, 0.12);
+  --glass-white-active: rgba(255, 255, 255, 0.18);
+  --glass-dark: rgba(0, 0, 0, 0.45);
+  --glass-dark-hover: rgba(0, 0, 0, 0.55);
 
-  /* Status Colors */
+  /* Status Colors - Apple Inspired Dark */
   --status-0: #ef4444;
-  --status-25: #f59e0b;
-  --status-50: #eab308;
-  --status-75: #84cc16;
+  --status-25: #fbbf24;
+  --status-50: #f59e0b;
+  --status-75: #22d3ee;
   --status-100: #10b981;
 
-  /* Category Colors */
-  --category-work: rgba(99, 102, 241, 0.85);
-  --category-personal: rgba(236, 72, 153, 0.85);
-  --category-shopping: rgba(251, 146, 60, 0.85);
-  --category-health: rgba(34, 197, 94, 0.85);
-  --category-finance: rgba(59, 130, 246, 0.85);
-  --category-education: rgba(168, 85, 247, 0.85);
-  --category-home: rgba(239, 68, 68, 0.85);
-  --category-other: rgba(107, 114, 128, 0.85);
+  /* Category Colors - Apple Inspired Glass Dark */
+  --category-work: rgba(99, 102, 241, 0.45);
+  --category-personal: rgba(236, 72, 153, 0.45);
+  --category-shopping: rgba(251, 146, 60, 0.45);
+  --category-health: rgba(34, 197, 94, 0.45);
+  --category-finance: rgba(59, 130, 246, 0.45);
+  --category-education: rgba(168, 85, 247, 0.45);
+  --category-home: rgba(239, 68, 68, 0.45);
+  --category-other: rgba(107, 114, 128, 0.45);
 
   /* Spacing */
   --space-1: 0.25rem;
@@ -134,27 +134,27 @@ html {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-  padding: var(--space-8);
+  padding: var(--space-4) var(--space-6);
   text-align: center;
   box-shadow: var(--shadow-md);
 }
 
 .app-header h1 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
   letter-spacing: -0.02em;
 }
 
 .app-subtitle {
-  font-size: 1rem;
+  font-size: 0.875rem;
   opacity: 0.9;
   font-weight: 400;
 }
 
 .app-main {
   flex: 1;
-  padding: var(--space-8);
+  padding: var(--space-5);
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -164,9 +164,9 @@ html {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding: var(--space-6);
+  padding: var(--space-3);
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   opacity: 0.8;
   margin-top: auto;
 }
@@ -176,12 +176,12 @@ html {
    ======================================== */
 
 .quick-add {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-5);
 }
 
 .quick-add-form {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
 }
 
@@ -190,9 +190,9 @@ html {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 12px 16px;
-  font-size: 1rem;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
   color: white;
   transition: all var(--transition-base) cubic-bezier(0.4, 0, 0.2, 1);
   font-family: var(--font-primary);
@@ -222,9 +222,9 @@ html {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
-  padding: 12px 24px;
-  font-size: 1rem;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 0.95rem;
   font-weight: 600;
   color: white;
   cursor: pointer;
@@ -256,17 +256,17 @@ html {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  padding: var(--space-6);
-  margin-bottom: var(--space-8);
+  border-radius: 12px;
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
   box-shadow: var(--shadow-sm);
 }
 
 .filter-row {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
 }
 
 .filter-row:last-child {
@@ -279,12 +279,12 @@ html {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 0.95rem;
+  padding: 8px 12px;
+  font-size: 0.875rem;
   color: white;
   transition: all var(--transition-base);
   flex: 1;
-  min-width: 150px;
+  min-width: 140px;
   font-family: var(--font-primary);
 }
 
@@ -302,8 +302,9 @@ html {
   background: rgba(239, 68, 68, 0.2);
   border: 1px solid rgba(239, 68, 68, 0.4);
   border-radius: 8px;
-  padding: 10px 16px;
+  padding: 8px 14px;
   color: #fee2e2;
+  font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-base);
@@ -322,7 +323,7 @@ html {
 .task-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .no-tasks {
@@ -355,8 +356,8 @@ html {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 16px;
-  padding: var(--space-6);
+  border-radius: 12px;
+  padding: var(--space-4);
   cursor: pointer;
   transition: all var(--transition-base) cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
@@ -386,33 +387,18 @@ html {
 .task-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .task-header {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
-}
-
-.task-checkbox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-
-.task-checkbox input {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+  gap: var(--space-3);
 }
 
 .task-title {
   flex: 1;
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 500;
   word-break: break-word;
 }
@@ -440,23 +426,40 @@ html {
 
 .task-meta {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   flex-wrap: wrap;
   align-items: center;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
 }
 
 .task-due-date {
-  padding: 4px 8px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
+  padding: 6px 14px;
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 10px;
   transition: all var(--transition-base);
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .task-due-date.overdue {
   background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.4);
   color: #fecaca;
   font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
 .task-progress-container {
@@ -481,9 +484,10 @@ html {
   height: 100%;
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   position: relative;
   overflow: hidden;
+  background: linear-gradient(90deg, var(--progress-color, #22d3ee) 0%, #232526 100%);
 }
 
 .progress-bar::after {
@@ -493,7 +497,7 @@ html {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
   animation: shimmer 2s infinite;
 }
 
@@ -541,7 +545,7 @@ html {
 
 .sub-tasks .task-item {
   padding: var(--space-4);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--glass-dark);
   box-shadow: none;
   border-radius: 12px;
 }

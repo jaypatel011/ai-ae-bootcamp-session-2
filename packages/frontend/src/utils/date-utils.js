@@ -26,16 +26,23 @@ export const getRelativeDateLabel = (dateString) => {
 
   if (taskDate < today) {
     const daysOverdue = Math.floor((today - taskDate) / (1000 * 60 * 60 * 24));
-    return `Overdue by ${daysOverdue} day${daysOverdue !== 1 ? 's' : ''}`;
+    if (daysOverdue === 1) return 'Yesterday';
+    return `${daysOverdue}d overdue`;
   }
 
-  if (taskDate.getTime() === today.getTime()) return 'Due Today';
-  if (taskDate.getTime() === tomorrow.getTime()) return 'Due Tomorrow';
+  if (taskDate.getTime() === today.getTime()) return 'Today';
+  if (taskDate.getTime() === tomorrow.getTime()) return 'Tomorrow';
   if (taskDate < nextWeek) {
-    const daysAway = Math.floor((taskDate - today) / (1000 * 60 * 60 * 24));
-    return `Due in ${daysAway} day${daysAway !== 1 ? 's' : ''}`;
+    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    return dayNames[taskDate.getDay()];
   }
 
+  const isThisYear = date.getFullYear() === new Date().getFullYear();
+  
+  if (isThisYear) {
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+  
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 };
 

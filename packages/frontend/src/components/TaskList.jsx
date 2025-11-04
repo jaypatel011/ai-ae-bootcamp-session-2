@@ -14,7 +14,7 @@ export const TaskList = ({
 }) => {
   if (tasks.length === 0) {
     return (
-      <div className="task-list">
+      <div className="task-list" style={{padding: '2rem 0'}}>
         <div className="no-tasks">
           <p>No tasks found</p>
           <p className="no-tasks-hint">Create a new task or adjust your filters</p>
@@ -24,7 +24,7 @@ export const TaskList = ({
   }
 
   return (
-    <div className="task-list">
+    <div className="task-list" style={{gap: '2rem', padding: '2rem 0'}}>
       {tasks.map((task) => (
         <TaskItem
           key={task.id}
