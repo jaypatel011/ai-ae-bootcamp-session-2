@@ -6,6 +6,9 @@ This file contains high-level instructions for GitHub Copilot to follow when gen
 
 ## Documentation Overview
 
-The project documentation will be built during the bootcamp sessions.
+The project documentation includes guides for development and requirements.
 
 - [Project Overview](../docs/project-overview.md) - Overview of the project
+- [Functional Requirements](../docs/functional-requirements.md) - Core functional requirements for the TODO list app
+- [PRD](../docs/todo-app-prd.md) - Product Requirements Document with detailed specifications
+- [Implementation Guide](../docs/implementation-guide.md) - Technical implementation details and code examples
