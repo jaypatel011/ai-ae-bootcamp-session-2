@@ -239,8 +239,10 @@ describe('TaskDetail Component', () => {
     const descriptionElement = screen.getByText(mockTask.description);
     await user.click(descriptionElement);
 
-    const textareas = container.querySelectorAll('textarea');
-    expect(textareas.length).toBeGreaterThan(0);
+    await waitFor(() => {
+      const textareas = container.querySelectorAll('textarea');
+      expect(textareas.length).toBeGreaterThan(0);
+    });
   });
 
   test('renders date input field', () => {
@@ -270,6 +272,13 @@ describe('TaskDetail Component', () => {
     await user.click(descriptionElement);
 
     // Type new description
+    await waitFor(() => {
+      const textareas = container.querySelectorAll('textarea');
+      if (textareas.length > 0) {
+        return textareas.length > 0;
+      }
+    });
+
     const textareas = container.querySelectorAll('textarea');
     if (textareas.length > 0) {
       await user.clear(textareas[0]);
@@ -514,8 +523,10 @@ describe('TaskDetail Component', () => {
     const titleElement = screen.getByText('Test Task');
     await user.click(titleElement);
 
-    const inputs = container.querySelectorAll('input[type="text"]');
-    expect(inputs.length).toBeGreaterThan(0);
+    await waitFor(() => {
+      const inputs = container.querySelectorAll('input[type="text"]');
+      expect(inputs.length).toBeGreaterThan(0);
+    });
   });
 
   test('exits edit mode when title blur occurs', async () => {
@@ -531,6 +542,13 @@ describe('TaskDetail Component', () => {
     const titleElement = screen.getByText('Test Task');
     await user.click(titleElement);
 
+    await waitFor(() => {
+      const titleInputs = container.querySelectorAll('input[type="text"]');
+      if (titleInputs.length > 0) {
+        return titleInputs.length > 0;
+      }
+    });
+
     const titleInputs = container.querySelectorAll('input[type="text"]');
     if (titleInputs.length > 0) {
       const titleInput = titleInputs[titleInputs.length - 1]; // Last text input
@@ -542,7 +560,7 @@ describe('TaskDetail Component', () => {
 
   test('updates title when edited and focused away', async () => {
     const user = userEvent.setup();
-    render(
+    const { container } = render(
       <TaskDetail
         task={mockTask}
         allTasks={[mockTask]}
@@ -554,8 +572,12 @@ describe('TaskDetail Component', () => {
     const titleElement = screen.getByText('Test Task');
     expect(titleElement).toHaveClass('editable');
     await user.click(titleElement);
-    // If we get here without error, the test passes
-    expect(true).toBe(true);
+    
+    // Wait for edit mode to be activated
+    await waitFor(() => {
+      const inputs = container.querySelectorAll('input[type="text"]');
+      expect(inputs.length).toBeGreaterThan(0);
+    });
   });
 
   test('enters description edit mode when clicked', async () => {
@@ -624,7 +646,9 @@ describe('TaskDetail Component', () => {
       await user.clear(descriptionInput);
       await user.type(descriptionInput, 'Updated description');
       descriptionInput.blur();
-      expect(mockHandlers.onUpdate).toHaveBeenCalled();
+      await waitFor(() => {
+        expect(mockHandlers.onUpdate).toHaveBeenCalled();
+      });
     }
   });
 
@@ -732,7 +756,9 @@ describe('TaskDetail Component', () => {
       const addButtons = screen.getAllByRole('button', { name: /Add/i });
       if (addButtons.length > 0) {
         await user.click(addButtons[addButtons.length - 1]);
-        expect(mockHandlers.onAddSubTask).toHaveBeenCalled();
+        await waitFor(() => {
+          expect(mockHandlers.onAddSubTask).toHaveBeenCalled();
+        });
       }
     }
   });
@@ -796,11 +822,13 @@ describe('TaskDetail Component', () => {
       const subTaskInput = addSubTaskInputs[0];
       await user.type(subTaskInput, 'New Sub Task');
 
-      const addButtons = screen.getAllByRole('button', { name: /Add/i });
-      if (addButtons.length > 0) {
-        const addSubTaskBtn = addButtons[addButtons.length - 1];
-        expect(addSubTaskBtn).not.toBeDisabled();
-      }
+      await waitFor(() => {
+        const addButtons = screen.getAllByRole('button', { name: /Add/i });
+        if (addButtons.length > 0) {
+          const addSubTaskBtn = addButtons[addButtons.length - 1];
+          expect(addSubTaskBtn).not.toBeDisabled();
+        }
+      });
     }
   });
 
@@ -843,7 +871,9 @@ describe('TaskDetail Component', () => {
       const addButtons = screen.getAllByRole('button', { name: /Add/i });
       if (addButtons.length > 0) {
         await user.click(addButtons[addButtons.length - 1]);
-        expect(mockHandlers.onAddSubTask).toHaveBeenCalled();
+        await waitFor(() => {
+          expect(mockHandlers.onAddSubTask).toHaveBeenCalled();
+        });
       }
     }
   });
