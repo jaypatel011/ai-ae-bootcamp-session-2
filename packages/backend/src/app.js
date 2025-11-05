@@ -46,4 +46,7 @@ app.use((req, res) => {
   });
 });
 
+// Export app and database instance for testing
+const { db } = require('./utils/database');
 module.exports = app;
+module.exports.db = db;
