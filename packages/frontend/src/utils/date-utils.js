@@ -4,6 +4,17 @@
  */
 
 /**
+ * Helper: Parse ISO date string handling timezone correctly
+ * @param {string} dateString - ISO date string (YYYY-MM-DD)
+ * @returns {Date} Date object in local timezone at midnight
+ */
+const parseISODate = (dateString) => {
+  const [year, month, day] = dateString.split('-').map(Number);
+  const date = new Date(year, month - 1, day);
+  return date;
+};
+
+/**
  * Gets a human-readable relative date label
  * @param {string|null} dateString - ISO date string (YYYY-MM-DD)
  * @returns {string|null} Relative date label or full date
@@ -21,8 +32,7 @@ export const getRelativeDateLabel = (dateString) => {
   const nextWeek = new Date(today);
   nextWeek.setDate(nextWeek.getDate() + 7);
 
-  const taskDate = new Date(dateString);
-  taskDate.setHours(0, 0, 0, 0);
+  const taskDate = parseISODate(dateString);
 
   if (taskDate < today) {
     const daysOverdue = Math.floor((today - taskDate) / (1000 * 60 * 60 * 24));
@@ -59,8 +69,7 @@ export const matchesDateRange = (dateString, range) => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const taskDate = new Date(dateString);
-  taskDate.setHours(0, 0, 0, 0);
+  const taskDate = parseISODate(dateString);
 
   switch (range) {
     case 'overdue':
@@ -107,8 +116,7 @@ export const formatDateForInput = (dateString) => {
 export const isOverdue = (dateString) => {
   if (!dateString) return false;
 
-  const taskDate = new Date(dateString);
-  taskDate.setHours(0, 0, 0, 0);
+  const taskDate = parseISODate(dateString);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -124,8 +132,7 @@ export const isOverdue = (dateString) => {
 export const daysUntilDue = (dateString) => {
   if (!dateString) return null;
 
-  const taskDate = new Date(dateString);
-  taskDate.setHours(0, 0, 0, 0);
+  const taskDate = parseISODate(dateString);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);

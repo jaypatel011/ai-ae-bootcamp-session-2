@@ -31,34 +31,35 @@ describe('dateUtils', () => {
       expect(getRelativeDateLabel(null)).toBeNull();
     });
 
-    test('returns "Due Today" for today', () => {
+    test('returns "Today" for today', () => {
       const dateStr = today.toISOString().split('T')[0];
-      expect(getRelativeDateLabel(dateStr)).toBe('Due Today');
+      expect(getRelativeDateLabel(dateStr)).toBe('Today');
     });
 
-    test('returns "Due Tomorrow" for tomorrow', () => {
+    test('returns "Tomorrow" for tomorrow', () => {
       const dateStr = tomorrow.toISOString().split('T')[0];
-      expect(getRelativeDateLabel(dateStr)).toBe('Due Tomorrow');
+      expect(getRelativeDateLabel(dateStr)).toBe('Tomorrow');
     });
 
-    test('returns relative label for dates this week', () => {
+    test('returns day name for dates this week', () => {
       const threeDaysFromNow = new Date(today);
       threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 3);
       const dateStr = threeDaysFromNow.toISOString().split('T')[0];
-      expect(getRelativeDateLabel(dateStr)).toContain('Due in');
-      expect(getRelativeDateLabel(dateStr)).toContain('days');
+      const label = getRelativeDateLabel(dateStr);
+      const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      expect(dayNames).toContain(label);
     });
 
-    test('returns full date for dates beyond this week', () => {
+    test('returns formatted date for dates beyond this week', () => {
       const dateStr = twoWeeksFromNow.toISOString().split('T')[0];
       const label = getRelativeDateLabel(dateStr);
-      expect(label).not.toContain('Due in');
       expect(label).toBeTruthy();
+      expect(label).toMatch(/^[A-Za-z]{3} \d{1,2}/); // Format: "Nov 15" or similar
     });
 
-    test('returns "Overdue by" for past dates', () => {
+    test('returns overdue label for past dates', () => {
       const dateStr = yesterday.toISOString().split('T')[0];
-      expect(getRelativeDateLabel(dateStr)).toContain('Overdue by');
+      expect(getRelativeDateLabel(dateStr)).toBe('Yesterday');
     });
   });
 

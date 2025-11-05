@@ -22,8 +22,8 @@ describe('App Component Integration', () => {
     });
 
     render(<App />);
-    expect(screen.getByText('📋 TODO App')).toBeInTheDocument();
-    expect(screen.getByText('Manage your tasks with ease')).toBeInTheDocument();
+    expect(screen.getByText('✨ FlowTask')).toBeInTheDocument();
+    expect(screen.getByText('Organize your life, amplify your productivity')).toBeInTheDocument();
   });
 
   test('shows loading state', () => {
