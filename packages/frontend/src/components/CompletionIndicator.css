@@ -1,0 +1,155 @@
+/**
+ * CompletionIndicator Styles
+ * Modern glassmorphism checkbox replacement with smooth animations
+ */
+
+.completion-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.completion-indicator:hover {
+  transform: scale(1.1);
+}
+
+.completion-indicator:active {
+  transform: scale(0.95);
+}
+
+.indicator-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Hover effect - subtle glow */
+.completion-indicator:hover .indicator-circle {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 
+    0 4px 16px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Completed state - vibrant green with glow */
+.completion-indicator.completed .indicator-circle {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.8), rgba(52, 211, 153, 0.9));
+  border-color: rgba(16, 185, 129, 0.8);
+  box-shadow: 
+    0 0 0 0 rgba(16, 185, 129, 0.4),
+    0 4px 16px rgba(16, 185, 129, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  animation: completeAnimation 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Pulse animation on completion */
+@keyframes completeAnimation {
+  0% {
+    transform: scale(1);
+    box-shadow: 
+      0 0 0 0 rgba(16, 185, 129, 0.7),
+      0 4px 16px rgba(16, 185, 129, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 
+      0 0 0 8px rgba(16, 185, 129, 0),
+      0 4px 16px rgba(16, 185, 129, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 
+      0 0 0 0 rgba(16, 185, 129, 0),
+      0 4px 16px rgba(16, 185, 129, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Checkmark SVG */
+.checkmark {
+  width: 18px;
+  height: 18px;
+  color: white;
+  animation: checkmarkAnimation 0.3s ease-in-out;
+}
+
+@keyframes checkmarkAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(-90deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Focus state for accessibility */
+.completion-indicator:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .completion-indicator,
+  .indicator-circle,
+  .checkmark {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .completion-indicator:hover {
+    transform: none;
+  }
+  
+  .completion-indicator:active {
+    transform: none;
+  }
+}
+
+/* Dark background hover state */
+.completion-indicator:not(.completed):hover .indicator-circle::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  animation: hoverPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes hoverPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
